@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Super Altar Server Leaderboard</title>
+    </head>
+    <body>
+        <h1>Leaderboard</h1>
+        {% for score in scores %}
+        <p>{{ score.name }} - {{ score.time }}</p>
+        {% endfor %}
+    </body>
+</html>
