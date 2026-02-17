@@ -32,7 +32,7 @@ def index():
 	scores = []
 	
 	for i, result in enumerate(results):
-		score_dict = {'place': i + 1, 'name':result.name, 'time':result.time}
+		score_dict = {'place': str(i + 1), 'name':result.name, 'time':result.time}
 		scores.append(score_dict)
 
 	return render_template('index.html', scores = scores)
