@@ -28,11 +28,11 @@ with app.app_context():
 @app.route('/index')
 def index():
     #go to the score table and query it, order it by the score value descending, limit 5 and serve up all of those items I asked for as a list.
-	results = Score.query.order_by(asc('time')).limit(100).all()
+	results = Score.query.order_by(asc('time')).all()
 	scores = []
 	
-	for result in results:
-		score_dict = {'name':result.name, 'time':result.time}
+	for i, result in enumerate(results):
+		score_dict = {'place': i + 1, 'name':result.name, 'time':result.time}
 		scores.append(score_dict)
 
 	return render_template('index.html', scores = scores)
@@ -54,7 +54,7 @@ def submit_score():
 
 @app.route('/leaderboard', methods=['GET'])
 def get_top_five():
-    leaders = Score.query.order_by(asc('time')).limit(5).all()
+    leaders = Score.query.order_by(asc('time')).all()
     scores = []
     for leader in leaders:
         scores.append({"name": leader.name, "time": leader.time})
