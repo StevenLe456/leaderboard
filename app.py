@@ -21,9 +21,6 @@ class Score(db.Model):
     def __repr__(self):
         return '<User {}><Score {}>'.format(self.username, self.time)
 
-with app.app_context():
-    db.create_all()
-
 @app.route('/')
 @app.route('/index')
 def index():
